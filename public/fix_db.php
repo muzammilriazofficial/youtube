@@ -21,6 +21,7 @@ try {
         "ALTER TABLE `comments` CHANGE COLUMN `likes_count` `like_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
         "ALTER TABLE `playlists` CHANGE COLUMN `views_count` `view_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
         "ALTER TABLE `blog_posts` CHANGE COLUMN `views_count` `view_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+        "ALTER TABLE `users` ADD COLUMN `is_verified` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 AFTER `is_banned`",
     ];
 
     $ok = 0;

@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         $this->session->setAuthenticated((int) $user['id']);
 
-        if ($user['is_verified']) {
+        if (!empty($user['is_verified'])) {
             $this->session->set('user_verified', true);
         }
 

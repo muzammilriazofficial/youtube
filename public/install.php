@@ -98,6 +98,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $success[] = "Seeder completed. Roles, permissions, and default admin user seeded.";
 
+            $columnFixes = [
+                "ALTER TABLE `videos` CHANGE COLUMN `views_count` `view_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `videos` CHANGE COLUMN `likes_count` `like_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `videos` CHANGE COLUMN `dislikes_count` `dislike_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `videos` CHANGE COLUMN `shares_count` `share_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `comments` CHANGE COLUMN `likes_count` `like_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `playlists` CHANGE COLUMN `views_count` `view_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+                "ALTER TABLE `blog_posts` CHANGE COLUMN `views_count` `view_count` BIGINT UNSIGNED NOT NULL DEFAULT 0",
+            ];
+            foreach ($columnFixes as $fix) {
+                try { $pdo->exec($fix); } catch (\Throwable $e) {}
+            }
+            $success[] = "Column names normalized.";
+
             $adminHash = password_hash($adminPassword, PASSWORD_BCRYPT, ['cost' => 12]);
             $stmt = $pdo->prepare("UPDATE `users` SET `email` = ?, `password` = ?, `username` = ?, `first_name` = ?, `last_name` = ? WHERE `email` = 'admin@youtube.com'");
             $stmt->execute([$adminEmail, $adminHash, $adminUsername, $adminFirst, $adminLast]);

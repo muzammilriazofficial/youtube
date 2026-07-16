@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $migration = require $rootPath . '/database/migrations/001_create_all_tables.php';
             $migrationSql = preg_replace('/--.*$/m', '', $migration['up']);
+            $migrationSql = preg_replace('/CREATE TABLE\s+/i', 'CREATE TABLE IF NOT EXISTS ', $migrationSql);
             $statements = array_filter(array_map('trim', explode(';', $migrationSql)));
             foreach ($statements as $sql) {
                 $sql = trim($sql);
@@ -87,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $seeder = require $rootPath . '/database/seeders/001_seed_roles_permissions.php';
             $seederSql = preg_replace('/--.*$/m', '', $seeder['up']);
+            $seederSql = preg_replace('/INSERT INTO\s+/i', 'INSERT IGNORE INTO ', $seederSql);
             $seederStatements = array_filter(array_map('trim', explode(';', $seederSql)));
             foreach ($seederStatements as $sql) {
                 $sql = trim($sql);

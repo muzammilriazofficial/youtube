@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= e($title ?? 'Support Panel') ?></title>
+    <link href="<?= asset('vendor/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= asset('css/bootstrap-icons.css') ?>" rel="stylesheet">
+    <style>
+        :root { --support-purple: #7c3aed; --support-purple-light: #a78bfa; --support-purple-dark: #5b21b6; --support-bg: #1e1b2e; }
+        body { padding-top: 56px; }
+        .sidebar { min-height: calc(100vh - 56px); position: sticky; top: 56px; overflow-y: auto; max-height: calc(100vh - 56px); width: 260px; background: var(--support-bg); }
+        .sidebar .nav-link { color: var(--bs-body-color); padding: 8px 16px; border-radius: 6px; margin: 1px 8px; font-size: 14px; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { background: rgba(124, 58, 237, 0.15); color: var(--support-purple-light); }
+        .sidebar .nav-link i { width: 20px; text-align: center; margin-right: 8px; }
+        .sidebar .nav-header { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--bs-secondary-color); padding: 12px 16px 4px; }
+        .navbar { background: var(--support-bg) !important; border-color: rgba(124, 58, 237, 0.2) !important; }
+        .navbar-brand { color: var(--support-purple-light) !important; }
+        .sidebar-brand { padding: 16px 16px 8px; border-bottom: 1px solid rgba(124, 58, 237, 0.2); margin-bottom: 8px; }
+        .sidebar-brand .brand-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--support-purple), var(--support-purple-dark)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .stat-card { border-left: 4px solid; }
+        .badge-priority-low { background: var(--bs-secondary); }
+        .badge-priority-medium { background: #2563eb; }
+        .badge-priority-high { background: #f59e0b; }
+        .badge-priority-urgent { background: #dc2626; }
+        .badge-status-open { background: #2563eb; }
+        .badge-status-in_progress { background: #eab308; color: #000; }
+        .badge-status-waiting_on_user { background: #f97316; }
+        .badge-status-resolved { background: #16a34a; }
+        .badge-status-closed { background: #6b7280; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="<?= url('/support/dashboard') ?>">
+                <i class="bi bi-headset me-2"></i>Support Panel
+            </a>
+            <div class="d-flex align-items-center ms-auto">
+                <a href="<?= url('/') ?>" class="btn btn-link text-decoration-none me-2" title="View Site"><i class="bi bi-globe fs-5"></i></a>
+                <button class="btn btn-link text-decoration-none me-2" id="themeToggle"><i class="bi bi-moon-stars-fill fs-5"></i></button>
+                <div class="dropdown">
+                    <button class="btn btn-link text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle fs-5"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="<?= url('/viewer/profile') ?>"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form method="POST" action="<?= url('/logout') ?>"><?= csrf_field() ?>
+                                <button class="dropdown-item" type="submit"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <aside class="sidebar border-end p-0 d-none d-lg-block">
+            <div class="sidebar-brand d-flex align-items-center">
+                <div class="brand-icon me-2"><i class="bi bi-headset text-white"></i></div>
+                <div>
+                    <div class="fw-bold small">Support Agent</div>
+                    <div class="text-muted" style="font-size:11px;">Help Center</div>
+                </div>
+            </div>
+            <nav class="nav flex-column py-2">
+                <div class="nav-header">Overview</div>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'dashboard' ? 'active' : '' ?>" href="<?= url('/support/dashboard') ?>"><i class="bi bi-speedometer2"></i>Dashboard</a>
+                <div class="nav-header">Ticket Management</div>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'tickets' ? 'active' : '' ?>" href="<?= url('/support/tickets') ?>"><i class="bi bi-ticket-detailed"></i>Tickets</a>
+                <div class="nav-header">User Management</div>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'users' ? 'active' : '' ?>" href="<?= url('/support/users') ?>"><i class="bi bi-people"></i>Users</a>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'creators' ? 'active' : '' ?>" href="<?= url('/support/creators') ?>"><i class="bi bi-camera-video"></i>Creators</a>
+                <div class="nav-header">Help Resources</div>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'monetization-help' ? 'active' : '' ?>" href="<?= url('/support/monetization-help') ?>"><i class="bi bi-cash-coin"></i>Monetization Help</a>
+                <a class="nav-link <?= ($activeMenu ?? '') === 'copyright-help' ? 'active' : '' ?>" href="<?= url('/support/copyright-help') ?>"><i class="bi bi-shield-lock"></i>Copyright Help</a>
+            </nav>
+        </aside>
+
+        <main class="flex-grow-1 p-4">
+            <?php if (($success ?? null) !== null): ?>
+                <div class="alert alert-success alert-dismissible fade show"><?= e($success) ?><button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+            <?php endif; ?>
+            <?php if (($error ?? null) !== null): ?>
+                <div class="alert alert-danger alert-dismissible fade show"><?= e($error) ?><button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+            <?php endif; ?>
+            <?= $__content ?>
+        </main>
+    </div>
+
+    <script src="<?= asset('vendor/bootstrap.bundle.min.js') ?>"></script>
+    <script>
+        document.getElementById('themeToggle')?.addEventListener('click', () => {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', next);
+            localStorage.setItem('theme', next);
+        });
+        const saved = localStorage.getItem('theme');
+        if (saved) document.documentElement.setAttribute('data-bs-theme', saved);
+    </script>
+</body>
+</html>

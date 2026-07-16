@@ -69,5 +69,5 @@ jobs:
           server-dir: ./
           local-dir: ./
           exclude: .git/** .github/**
-          dangerous-cleanup: false
+          dangerous-clean-slate: false
           timeout: 120

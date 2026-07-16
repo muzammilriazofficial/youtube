@@ -66,7 +66,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: ./
+          server-dir: htdocs/
           local-dir: ./
           exclude: .git/** .github/**
           dangerous-clean-slate: false

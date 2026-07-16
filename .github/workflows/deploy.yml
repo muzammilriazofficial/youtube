@@ -68,6 +68,6 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           server-dir: htdocs/
           local-dir: ./
-          exclude: .git/** .github/** storage/.installed
+          exclude: .git/** .github/** storage/.installed public/install.php
           dangerous-clean-slate: false
           timeout: 60000

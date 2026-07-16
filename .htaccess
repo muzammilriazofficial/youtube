@@ -1,0 +1,69 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /youtube
+
+# ─── Handle Authorization Header ───────────────────────────────
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# ─── Block Access to Sensitive Directories ─────────────────────
+RewriteRule ^app/ - [F,L]
+RewriteRule ^config/ - [F,L]
+RewriteRule ^database/ - [F,L]
+RewriteRule ^vendor/ - [F,L]
+RewriteRule ^routes/ - [F,L]
+
+# ─── Allow serving thumbnails and videos from storage ──────────
+RewriteCond %{REQUEST_URI} ^/youtube/storage/(thumbnails|videos)/
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI} -f
+RewriteRule ^ - [L]
+
+# ─── Block other storage access ────────────────────────────────
+RewriteRule ^storage/ - [F,L]
+
+# ─── Redirect Trailing Slashes (except root) ───────────────────
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# ─── Serve static files from public/ ───────────────────────────
+RewriteCond %{REQUEST_URI} ^/youtube/(.+)$
+RewriteCond %{DOCUMENT_ROOT}/youtube/public/%1 -f
+RewriteRule ^ public/%1 [L]
+
+# ─── Serve storage files (thumbnails & videos) from project root ─
+RewriteCond %{REQUEST_URI} ^/youtube/storage/(thumbnails|videos)/(.+)$
+RewriteCond %{DOCUMENT_ROOT}/youtube/storage/%2 -f
+RewriteRule ^ storage/%2 [L]
+
+# ─── Front Controller ──────────────────────────────────────────
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ public/index.php [QSA,L]
+</IfModule>
+
+# ─── Security Headers ──────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ─── Compression ───────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript text/xml text/plain
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/ttf font/otf font/woff font/woff2
+</IfModule>
+
+# ─── Caching ───────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/* "access plus 1 year"
+    ExpiresByType font/* "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+</IfModule>

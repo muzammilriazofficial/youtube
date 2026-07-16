@@ -1,0 +1,73 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: FTP Deploy
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Write .env file
+        run: |
+          echo 'APP_NAME="YouTube Clone"' > .env
+          echo "APP_URL=${{ secrets.APP_URL }}" >> .env
+          echo "APP_ENV=production" >> .env
+          echo "APP_DEBUG=false" >> .env
+          echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env
+          echo "DB_DRIVER=mysql" >> .env
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+          echo "DB_PORT=3306" >> .env
+          echo "DB_DATABASE=${{ secrets.DB_NAME }}" >> .env
+          echo "DB_USERNAME=${{ secrets.DB_USER }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASS }}" >> .env
+          echo "DB_CHARSET=utf8mb4" >> .env
+          echo "DB_COLLATION=utf8mb4_unicode_ci" >> .env
+          echo "STORAGE_DRIVER=local" >> .env
+          echo "STORAGE_LOCAL_PATH=/home/${{ secrets.FTP_USER }}/htdocs/storage" >> .env
+          echo "MAIL_DRIVER=smtp" >> .env
+          echo "MAIL_HOST=smtp.mailtrap.io" >> .env
+          echo "MAIL_PORT=587" >> .env
+          echo "MAIL_ENCRYPTION=tls" >> .env
+          echo "MAIL_USERNAME=" >> .env
+          echo "MAIL_PASSWORD=" >> .env
+          echo "MAIL_FROM_ADDRESS=noreply@yourdomain.com" >> .env
+          echo "MAIL_FROM_NAME=\"YouTube Clone\"" >> .env
+          echo "SESSION_LIFETIME=120" >> .env
+          echo "SESSION_SECURE=true" >> .env
+          echo "UPLOAD_MAX_SIZE=104857600" >> .env
+          echo "VIDEO_MAX_SIZE=1073741824" >> .env
+          echo "IMAGE_MAX_SIZE=5242880" >> .env
+          echo ".env written successfully"
+          cat .env
+
+      - name: Transform .htaccess for production
+        run: |
+          sed -i 's|/youtube|/|g' .htaccess
+          echo "--- Transformed .htaccess ---"
+          cat .htaccess
+
+      - name: Create writable storage dirs
+        run: |
+          for dir in sessions cache logs framework backups temp hls; do
+            mkdir -p "storage/$dir"
+          done
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: ./
+          local-dir: ./
+          exclude: .git/** .github/**
+          dangerous-cleanup: false
+          timeout: 120

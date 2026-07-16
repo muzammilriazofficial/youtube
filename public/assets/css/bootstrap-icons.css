@@ -1,0 +1,408 @@
+/*!
+ * Bootstrap Icons - Offline Unicode Fallback CSS
+ * Approximate Unicode symbol replacements for Bootstrap Icons.
+ * Generated for offline/local environments where CDN is unavailable.
+ */
+
+/* ============================================
+   Base Icon Class
+   ============================================ */
+
+.bi,
+.bi::before {
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.bi::before {
+  content: "";
+}
+
+/* ============================================
+   Size Variants
+   ============================================ */
+
+.bi-xs {
+  font-size: 0.75em;
+}
+
+.bi-sm {
+  font-size: 0.875em;
+}
+
+.bi-md {
+  font-size: 1em;
+}
+
+.bi-lg {
+  font-size: 1.25em;
+}
+
+.bi-xl {
+  font-size: 1.5em;
+}
+
+.bi-1x { font-size: 1em; }
+.bi-2x { font-size: 2em; }
+.bi-3x { font-size: 3em; }
+.bi-4x { font-size: 4em; }
+.bi-5x { font-size: 5em; }
+.bi-6x { font-size: 6em; }
+.bi-7x { font-size: 7em; }
+.bi-8x { font-size: 8em; }
+.bi-9x { font-size: 9em; }
+.bi-10x { font-size: 10em; }
+
+/* ============================================
+   Text Color Utilities for Icons
+   ============================================ */
+
+.bi-text-primary { color: var(--bs-primary, #0d6efd); }
+.bi-text-secondary { color: var(--bs-secondary, #6c757d); }
+.bi-text-success { color: var(--bs-success, #198754); }
+.bi-text-danger { color: var(--bs-danger, #dc3545); }
+.bi-text-warning { color: var(--bs-warning, #ffc107); }
+.bi-text-info { color: var(--bs-info, #0dcaf0); }
+.bi-text-light { color: var(--bs-light, #f8f9fa); }
+.bi-text-dark { color: var(--bs-dark, #212529); }
+.bi-text-muted { color: var(--bs-secondary-color, #6c757d); }
+.bi-text-white { color: #fff; }
+
+/* ============================================
+   Navigation & UI Icons
+   ============================================ */
+
+.bi-list::before { content: "\2261"; }              /* ≡ */
+
+.bi-search::before { content: "\1F50D"; }           /* 🔍 */
+
+.bi-plus-circle::before { content: "\2295"; }        /* ⊕ */
+
+.bi-bell::before { content: "\1F514"; }             /* 🔔 */
+
+.bi-check-all::before { content: "\2714"; }          /* ✔ */
+
+.bi-bell-slash::before { content: "\1F515"; }        /* 🔕 */
+
+.bi-youtube::before { content: "\25B6"; }            /* ▶ */
+
+.bi-speedometer2::before { content: "\26A1"; }      /* ⚡ */
+
+.bi-collection-play::before { content: "\25B6"; }    /* ▶ */
+
+.bi-clock-history::before { content: "\1F550"; }     /* 🕐 */
+
+.bi-gear::before { content: "\2699"; }               /* ⚙ */
+
+.bi-palette::before { content: "\1F3A8"; }           /* 🎨 */
+
+.bi-moon-stars::before { content: "\1F319"; }        /* 🌙 */
+
+.bi-moon-stars-fill::before { content: "\1F319"; }   /* 🌙 */
+
+.bi-box-arrow-right::before { content: "\27A1"; }    /* ➡ */
+
+.bi-person-circle::before { content: "\1F464"; }     /* 👤 */
+
+.bi-house-fill::before { content: "\1F3E0"; }        /* 🏠 */
+
+.bi-house::before { content: "\1F3E0"; }             /* 🏠 */
+
+.bi-lightning-charge::before { content: "\26A1"; }   /* ⚡ */
+
+.bi-lightning::before { content: "\26A1"; }          /* ⚡ */
+
+.bi-lightning-fill::before { content: "\26A1"; }     /* ⚡ */
+
+.bi-clock::before { content: "\1F550"; }             /* 🕐 */
+
+.bi-clock-fill::before { content: "\1F550"; }        /* 🕐 */
+
+.bi-hand-thumbs-up::before { content: "\1F44D"; }    /* 👍 */
+
+.bi-fire::before { content: "\1F525"; }              /* 🔥 */
+
+.bi-music-note-beamed::before { content: "\1F3B5"; } /* 🎵 */
+
+.bi-controller::before { content: "\1F3AE"; }        /* 🎮 */
+
+.bi-newspaper::before { content: "\1F4F0"; }         /* 📰 */
+
+.bi-trophy::before { content: "\1F3C6"; }            /* 🏆 */
+
+.bi-book::before { content: "\1F4D6"; }              /* 📖 */
+
+.bi-grid::before { content: "\229E"; }               /* ⊞ */
+
+.bi-broadcast::before { content: "\1F4E1"; }         /* 📡 */
+
+.bi-arrow-up::before { content: "\2191"; }           /* ↑ */
+
+.bi-x::before { content: "\2715"; }                  /* ✕ */
+
+.bi-x-lg::before { content: "\2715"; }               /* ✕ */
+
+.bi-x-circle::before { content: "\2715"; }           /* ✕ */
+
+.bi-check-circle-fill::before { content: "\2714"; }  /* ✔ */
+
+.bi-exclamation-circle-fill::before { content: "\26A0"; } /* ⚠ */
+
+.bi-arrow-left::before { content: "\2190"; }         /* ← */
+
+.bi-arrow-right::before { content: "\2192"; }        /* → */
+
+.bi-pencil::before { content: "\270F"; }             /* ✏ */
+
+.bi-pencil-square::before { content: "\270F"; }      /* ✏ */
+
+.bi-image::before { content: "\1F5BC"; }             /* 🖼 */
+
+.bi-person::before { content: "\1F464"; }            /* 👤 */
+
+.bi-patch-check-fill::before { content: "\2714"; }   /* ✔ */
+
+.bi-patch-check::before { content: "\2714"; }        /* ✔ */
+
+.bi-play-circle::before { content: "\25B6"; }        /* ▶ */
+
+.bi-play-btn::before { content: "\25B6"; }           /* ▶ */
+
+.bi-play-fill::before { content: "\25B6"; }          /* ▶ */
+
+.bi-inbox::before { content: "\1F4E5"; }             /* 📥 */
+
+.bi-folder::before { content: "\1F4C1"; }            /* 📁 */
+
+.bi-folder-fill::before { content: "\1F4C1"; }       /* 📁 */
+
+.bi-folder2::before { content: "\1F4C2"; }           /* 📂 */
+
+.bi-graph-up::before { content: "\1F4C8"; }          /* 📈 */
+
+.bi-graph-up-arrow::before { content: "\1F4C8"; }    /* 📈 */
+
+.bi-eye::before { content: "\1F441"; }               /* 👁 */
+
+.bi-eye-slash::before { content: "\1F441"; }         /* 👁 */
+
+.bi-cursor::before { content: "\25CE"; }             /* ◎ */
+
+.bi-cash-coin::before { content: "\1F4B0"; }         /* 💰 */
+
+.bi-cash::before { content: "\1F4B0"; }              /* 💰 */
+
+.bi-cash-stack::before { content: "\1F4B0"; }        /* 💰 */
+
+.bi-plus::before { content: "+"; }                    /* + */
+
+.bi-plus-lg::before { content: "+"; }                 /* + */
+
+.bi-upload::before { content: "\2B06"; }             /* ⬆ */
+
+.bi-wallet2::before { content: "\1F4B3"; }           /* 💳 */
+
+.bi-funnel::before { content: "\1F53D"; }            /* 🔽 */
+
+.bi-check-circle::before { content: "\2714"; }       /* ✔ */
+
+.bi-check-lg::before { content: "\2714"; }           /* ✔ */
+
+.bi-trash::before { content: "\1F5D1"; }             /* 🗑 */
+
+.bi-download::before { content: "\2B07"; }           /* ⬇ */
+
+.bi-share::before { content: "\2197"; }              /* ↗ */
+
+.bi-flag::before { content: "\1F6A9"; }              /* 🚩 */
+
+.bi-three-dots-vertical::before { content: "\22EE"; } /* ⋮ */
+
+.bi-chevron-down::before { content: "\25BE"; }       /* ▾ */
+
+.bi-chevron-right::before { content: "\25B8"; }      /* ▸ */
+
+.bi-chevron-left::before { content: "\25C2"; }       /* ◂ */
+
+.bi-exclamation-triangle::before { content: "\26A0"; } /* ⚠ */
+
+.bi-info-circle::before { content: "\2139"; }        /* ℹ */
+
+.bi-info-lg::before { content: "\2139"; }            /* ℹ */
+
+.bi-gear-fill::before { content: "\2699"; }          /* ⚙ */
+
+.bi-shield-lock::before { content: "\1F512"; }       /* 🔒 */
+
+.bi-shield-check::before { content: "\1F6E1"; }      /* 🛡 */
+
+.bi-shield-exclamation::before { content: "\26A0"; }  /* ⚠ */
+
+.bi-shield-fill-check::before { content: "\2714"; }   /* ✔ */
+
+.bi-database::before { content: "\1F4BE"; }          /* 💾 */
+
+.bi-cloud::before { content: "\2601"; }              /* ☁ */
+
+.bi-cloud-arrow-up::before { content: "\2601"; }     /* ☁ */
+
+.bi-envelope::before { content: "\2709"; }           /* ✉ */
+
+.bi-envelope-gear::before { content: "\2709"; }      /* ✉ */
+
+.bi-envelope-paper::before { content: "\2709"; }     /* ✉ */
+
+.bi-chat-dots::before { content: "\1F4AC"; }         /* 💬 */
+
+.bi-chat::before { content: "\1F4AC"; }              /* 💬 */
+
+.bi-chat-left-dots::before { content: "\1F4AC"; }    /* 💬 */
+
+.bi-chat-left-text::before { content: "\1F4AC"; }    /* 💬 */
+
+.bi-ticket-detailed::before { content: "\1F3AB"; }   /* 🎫 */
+
+.bi-people::before { content: "\1F465"; }            /* 👥 */
+
+.bi-people-fill::before { content: "\1F465"; }       /* 👥 */
+
+.bi-bar-chart::before { content: "\1F4CA"; }         /* 📊 */
+
+.bi-pie-chart::before { content: "\1F4CA"; }         /* 📊 */
+
+.bi-credit-card::before { content: "\1F4B3"; }       /* 💳 */
+
+.bi-globe::before { content: "\1F310"; }            /* 🌐 */
+
+.bi-link::before { content: "\1F517"; }              /* 🔗 */
+
+.bi-tags::before { content: "\1F3F7"; }              /* 🏷 */
+
+.bi-envelope::before { content: "\2709"; }           /* ✉ */
+
+.bi-file-text::before { content: "\1F4C4"; }         /* 📄 */
+
+.bi-clipboard::before { content: "\1F4CB"; }         /* 📋 */
+
+.bi-clipboard-check::before { content: "\1F4CB"; }   /* 📋 */
+
+.bi-journal-text::before { content: "\1F4D3"; }      /* 📓 */
+
+.bi-journal-richtext::before { content: "\1F4D3"; }  /* 📓 */
+
+.bi-journal-x::before { content: "\1F4D3"; }         /* 📓 */
+
+.bi-phone::before { content: "\1F4DE"; }             /* 📱 */
+
+.bi-headset::before { content: "\1F4DE"; }           /* 📱 */
+
+.bi-send::before { content: "\2708"; }               /* ✈ */
+
+.bi-reply::before { content: "\21A9"; }              /* ↩ */
+
+.bi-reply-all::before { content: "\21A9"; }          /* ↩ */
+
+.bi-bookmark::before { content: "\1F516"; }          /* 🔖 */
+
+.bi-heart::before { content: "\2764"; }              /* ❤ */
+
+.bi-heart-fill::before { content: "\2764"; }         /* ❤ */
+
+.bi-heart-pulse::before { content: "\1FAC1"; }       /* 🫀 */
+
+.bi-star::before { content: "\2605"; }               /* ★ */
+
+.bi-star-fill::before { content: "\2605"; }          /* ★ */
+
+.bi-volume-up::before { content: "\1F50A"; }         /* 🔊 */
+
+.bi-play::before { content: "\25B6"; }               /* ▶ */
+
+.bi-pause-circle::before { content: "\23F8"; }       /* ⏸ */
+
+.bi-stop-fill::before { content: "\23F9"; }          /* ⏹ */
+
+.bi-fullscreen::before { content: "\26F6"; }         /* ⛶ */
+
+.bi-arrows-fullscreen::before { content: "\2922"; }  /* ⤢ */
+
+.bi-person-check::before { content: "\2714"; }       /* ✔ */
+
+.bi-person-x::before { content: "\2715"; }           /* ✕ */
+
+.bi-person-plus::before { content: "+"; }            /* + */
+
+.bi-person-badge::before { content: "\1F464"; }      /* 👤 */
+
+.bi-person-dash::before { content: "-"; }            /* - */
+
+.bi-person-video2::before { content: "\1F464"; }     /* 👤 */
+
+.bi-toggle2-on::before { content: "\1F7E2"; }        /* 🟢 */
+
+.bi-calendar::before { content: "\1F4C5"; }          /* 📅 */
+
+.bi-hash::before { content: "#"; }                    /* # */
+
+.bi-dollar-sign::before { content: "$"; }            /* $ */
+
+.bi-brightness-high::before { content: "\2600"; }    /* ☀ */
+
+.bi-brightness-low::before { content: "\1F319"; }    /* 🌙 */
+
+.bi-terminal::before { content: ">"; }               /* > */
+
+.bi-file-earmark::before { content: "\1F4C4"; }      /* 📄 */
+
+.bi-file-earmark-text::before { content: "\1F4C4"; } /* 📄 */
+
+.bi-file-earmark-play::before { content: "\25B6"; }  /* ▶ */
+
+.bi-arrow-down::before { content: "\2193"; }         /* ↓ */
+
+.bi-filter::before { content: "\1F53D"; }            /* 🔽 */
+
+.bi-list-ul::before { content: "\2022"; }            /* • */
+
+.bi-camera-video::before { content: "\1F4F9"; }      /* 📹 */
+
+.bi-megaphone::before { content: "\1F4E2"; }         /* 📢 */
+
+.bi-plug::before { content: "\1F50C"; }              /* 🔌 */
+
+.bi-hourglass-split::before { content: "\231B"; }    /* ⌛ */
+
+.bi-slash-circle::before { content: "\20D0"; }       /* ⃠ */
+
+.bi-arrow-return-left::before { content: "\21A9"; }  /* ↩ */
+
+.bi-arrow-return-right::before { content: "\21AA"; } /* ↪ */
+
+.bi-arrow-clockwise::before { content: "\27F3"; }    /* ⟳ */
+
+.bi-arrow-counterclockwise::before { content: "\27F2"; } /* ⟲ */
+
+.bi-arrow-repeat::before { content: "\27F3"; }       /* ⟳ */
+
+.bi-bank::before { content: "\1F3E6"; }              /* 🏦 */
+
+.bi-exclamation-diamond::before { content: "\26A0"; } /* ⚠ */
+
+.bi-question-circle::before { content: "\2753"; }     /* ❓ */
+
+.bi-instagram::before { content: "\1F4F7"; }         /* 📷 */
+
+.bi-twitter-x::before { content: "X"; }              /* X */
+
+.bi-facebook::before { content: "f"; }               /* f */
+
+.bi-youtube::before { content: "\25B6"; }            /* ▶ */

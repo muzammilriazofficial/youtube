@@ -1,0 +1,43 @@
+# ── Environment ────────────────────────────────────────────────
+.env
+
+# ── Storage (writable / generated) ────────────────────────────
+storage/sessions/*
+storage/cache/*
+storage/logs/*
+storage/framework/*
+storage/backups/*
+storage/temp/*
+storage/hls/*
+storage/.installed
+
+# Keep directory structure
+!storage/sessions/.gitkeep
+!storage/cache/.gitkeep
+!storage/logs/.gitkeep
+!storage/framework/.gitkeep
+!storage/backups/.gitkeep
+!storage/temp/.gitkeep
+!storage/hls/.gitkeep
+
+# ── OS / IDE ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Misc ──────────────────────────────────────────────────────
+test_cookies.txt
+*.tmp
+*.log
+node_modules/
+vendor/
+
+# ── Duplicate / unused ────────────────────────────────────────
+views/

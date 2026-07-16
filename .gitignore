@@ -37,7 +37,7 @@ test_cookies.txt
 *.tmp
 *.log
 node_modules/
-vendor/
+/vendor/
 
 # ── Duplicate / unused ────────────────────────────────────────
 /views/

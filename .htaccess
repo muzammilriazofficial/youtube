@@ -26,9 +26,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 
 # ─── Serve static files from public/ ───────────────────────────
-RewriteCond %{REQUEST_URI} ^/youtube/(.+)$
-RewriteCond %{DOCUMENT_ROOT}/youtube/public/%1 -f
-RewriteRule ^ public/%1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.+)$ public/$1 [L]
 
 # ─── Serve storage files (thumbnails & videos) from project root ─
 RewriteCond %{REQUEST_URI} ^/youtube/storage/(thumbnails|videos)/(.+)$

@@ -70,4 +70,4 @@ jobs:
           local-dir: ./
           exclude: .git/** .github/**
           dangerous-clean-slate: false
-          timeout: 120
+          timeout: 60000
